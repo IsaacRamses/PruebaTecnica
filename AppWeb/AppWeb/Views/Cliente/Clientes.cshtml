@@ -1,0 +1,239 @@
+﻿@model IEnumerable<AppWeb.Models.Cliente>
+
+
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+                        <h1 class="h3 mb-0 text-gray-800">Cliente</h1>
+                        <a onclick="ModalRegistrer()" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Nuevo Cliente</a>
+</div>
+
+
+<div class="card shadow mb-4">                   
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
+                                    <div class="row"><div class="col-sm-12 col-md-6">
+                                        <div class="dataTables_length" id="dataTable_length">
+                                            </div>
+                                                </div>
+                                                <div class="col-sm-12 col-md-6"><div id="dataTable_filter" class="dataTables_filter">
+                                                  
+                                                        </div></div></div>
+                                                        
+                                                       <div class="row"><div class="col-sm-12">
+                                                            
+   <table class="table table-bordered dataTable" id="dataTablessss" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
+                                  
+       <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IdCliente)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre_1)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre_2)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Apellido_1)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Apellido_2)
+            </th>
+            <th>
+                @Html.DisplayName("Nombre")
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Id_Fkdocumento)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nacionalidad)
+            </th>
+            <th>
+                @Html.DisplayName("N° Documento")
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Fecha_Reg)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Fecha_Act)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Estatus)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdEmail)
+            </th>
+            <th>
+                @Html.DisplayName("Correo Electronico")
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TipoEmail)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdCliente)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre_1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre_2)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Apellido_1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Apellido_2)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nom_Compl)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id_Fkdocumento)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nacionalidad)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nro_Documento)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fecha_Reg)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fecha_Act)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Estatus)
+            </td>
+             <td>
+                @Html.DisplayFor(modelItem => item.IdEmail)
+            </td>
+             <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+              <td>
+                @Html.DisplayFor(modelItem => item.TipoEmail)
+            </td>
+
+            <td>
+                <button class="btn btn-secondary" type="button" id="Delete">Eliminar</button>
+                 <button class="btn btn-primary" type="button" id="Update">Actualizar</button>  
+            </td>
+        </tr>
+}
+    </tbody>
+                                  
+                                </table></div></div>
+                               </div>
+                            </div>
+                        </div>
+                    </div>
+
+  <div class="modal fade" id="ModalRegistrer" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Cliente</h5>     
+                </div>
+                <div class="modal-body">
+                    <form>
+                        @Html.Hidden("IdCliente__")
+                        @Html.Hidden("IdEmail__")
+                     <div class="form-row">
+                         <div class="form-group col-md-6">
+                                <label for="inputEmail4">Primer Nombre</label>
+                                <input type="text" class="form-control" id="PrimerNombre" placeholder="Primer Nombre" requerido="true">
+                        </div>
+                    
+                        <div class="form-group col-md-6">
+                                <label for="inputEmail4">Segundo Nombre</label>
+                                <input type="text" class="form-control" id="SegundoNombre" placeholder="Segundo Nombre">
+                        </div>
+              
+                    </div>
+                     <div class="form-row">
+                         <div class="form-group col-md-6">
+                                <label for="inputEmail4">Primer Apellido</label>
+                                <input type="text" class="form-control" id="PrimerApellido" placeholder="Primer Apellido" requerido="true">
+                        </div>   
+                         <div class="form-group col-md-6">
+                                <label for="inputEmail4">Segundo Apellido</label>
+                                 <input type="text" class="form-control" id="SegundoApellido" placeholder="Segundo Apellido" >
+                        </div> 
+                      </div>
+                      <div class="form-row">
+                           <div class="form-group col-md-6">
+                                <label for="inputEmail4">Nro. de Documento</label>
+                                 <input type="text" class="form-control" onkeypress="return validarNro(event)" id="NroDocument" placeholder="Nro de Documento" requerido="true">
+                        </div> 
+                        <div class="form-group col-md-6">
+                                <label for="inputEmail4">Tipo de Documento</label>
+                                  <select asp-items="ViewBag.TDocumento" id="TDocumento" class="form-control" requerido="true"></select>
+                        </div>                   
+                    </div>
+                     <div class="form-row">
+                           <div class="form-group col-md-6">
+                                <label for="inputEmail4">Nacionalidad</label>
+                                 <input type="text" class="form-control" onkeypress="return soloLetras(event)" id="Nacionalidad" placeholder="Nacionalidad">
+                        </div> 
+                                       
+                    </div>
+                     <div class="form-row">
+                           <div class="form-group col-md-6">
+                                <label for="inputEmail4">Email</label>
+                                 <input type="text" class="form-control" id="Email" placeholder="Email" requerido="true">
+                        </div> 
+                        <div class="form-group col-md-6">
+                                <label for="inputEmail4">Tipo de Email</label>
+                                  <select asp-items="ViewBag.TEmail" id="TEmail" class="form-control" requerido="true"></select>
+                        </div>                   
+                    </div>
+
+
+                </form>
+
+                 </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" type="button" id="Save">Guardar</button>  
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+  <div class="modal" id="ModalDelete" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Solicitud de Confirmación</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>En este momento se eliminara el registro del cliente y todos los email asociados. ¿Esta seguro que desea continuar con la operación?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" onclick="Delete()" >SI</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+@section Scripts{
+    <script src="~/App/Cliente.js"></script>
+}
+
+
+
+   
